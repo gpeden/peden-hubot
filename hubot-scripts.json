@@ -1,1 +1,4 @@
-[]
+[
+  "jira.coffee",
+  "jira-issues.coffee"
+]
