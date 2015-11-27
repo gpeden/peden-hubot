@@ -10,6 +10,7 @@
 # Commands:
 #   hubot cat me - Receive a cat
 #   hubot cat bomb N - get N cat
+#   hubot how many cats are there - return count of cats
 
 # static list of cat images
 
@@ -20,8 +21,13 @@ cats = [
 ]
 
 module.exports = (robot) ->
+  # return a single cat image
   robot.respond /cat me/i, (msg) ->
      msg.send cats[Math.floor(Math.random() * cats.length)]
+
+  #
+  robot.respond /how many cats are there/i, (msg) ->
+     msg.send "There are #{cats.length} cats."
 
   #robot.respond /cat me/i, (msg) ->
   #  msg.http("http://Catme.herokuapp.com/random")
