@@ -23,9 +23,18 @@ cats = [
   "http://i.imgur.com/xhTF2aF.gif"
 ]
 
+token = "Client-ID #{process.env.HUBOT_IMGUR_CLIENTID}"
+api_url = "https://api.imgur.com/3/gallery/r/CatGifs/0.json"
+
 module.exports = (robot) ->
   robot.respond /cat me/i, (msg) ->
-     msg.send msg.random cats
+    msg.http(api_url).headers('Authorization': token).get() (err, res, body) ->
+      if res.statusCode is 200
+        data = JSON.parse(body)
+        randomNum = Math.floor(Math.random() * data.data.length)
+        msg.send "#{data.data[randomNum].link}"
+      else
+        console.error "imgur-info script error: #{api_url} returned #{res.statusCode}: #{body}"
 
   robot.respond /cat bomb( (\d+))?/i, (msg) ->
     count = msg.match[2] || 5
@@ -33,4 +42,18 @@ module.exports = (robot) ->
       msg.send msg.random cats
 
   robot.respond /how many cats are there/i, (msg) ->
-     msg.send "There are #{cats.length} cats."
+    msg.http(api_url).headers('Authorization': token).get() (err, res, body) ->
+      if res.statusCode is 200
+        data = JSON.parse(body)
+        msg.send "There are #{data.data.length} cats."
+      else
+        console.error "imgur-info script error: #{api_url} returned #{res.statusCode}: #{body}"
+
+
+  robot.respond /hot me/i, (msg)->
+    msg.http(api_url).headers('Authorization': token).get() (err, res, body) ->
+      if res.statusCode is 200
+        data = JSON.parse(body)
+        msg.send "#{data.data[1].link}"
+      else
+        console.error "imgur-info script error: #{api_url} returned #{res.statusCode}: #{body}"
