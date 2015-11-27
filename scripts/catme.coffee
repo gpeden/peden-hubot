@@ -23,11 +23,17 @@ cats = [
 module.exports = (robot) ->
   # return a single cat image
   robot.respond /cat me/i, (msg) ->
-     msg.send cats[Math.floor(Math.random() * cats.length)]
+     msg.send msg.random cats
 
   #
   robot.respond /how many cats are there/i, (msg) ->
      msg.send "There are #{cats.length} cats."
+
+  robot.respond /cat bomb( (\d+))?/i, (msg) ->
+    count = msg.match[2] || 3
+    msg.http("http://Catme.herokuapp.com/bomb?count=" + count)
+      .get() (err, res, body) ->
+        msg.send cat for cat in JSON.parse(body).pugs
 
   #robot.respond /cat me/i, (msg) ->
   #  msg.http("http://Catme.herokuapp.com/random")
