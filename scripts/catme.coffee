@@ -30,10 +30,7 @@ module.exports = (robot) ->
      msg.send "There are #{cats.length} cats."
 
   robot.respond /cat bomb( (\d+))?/i, (msg) ->
-    count = msg.match[2] || 3
-    msg.http("http://Catme.herokuapp.com/bomb?count=" + count)
-      .get() (err, res, body) ->
-        msg.send cat for cat in JSON.parse(body).pugs
+        msg.send cat for cat in cats
 
   #robot.respond /cat me/i, (msg) ->
   #  msg.http("http://Catme.herokuapp.com/random")
