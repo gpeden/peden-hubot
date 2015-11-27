@@ -15,9 +15,9 @@
 # static list of cat images
 
 cats = [
-  "http://i.imgur.com/NXRSVri.jpg",
-  "http://i.imgur.com/xWCDvJx.jpg",
-  "http://i.imgur.com/GbhVwcm.gif",
+  'http://i.imgur.com/NXRSVri.jpg',
+  'http://i.imgur.com/xWCDvJx.jpg',
+  'http://i.imgur.com/GbhVwcm.gif',
 ]
 
 module.exports = (robot) ->
