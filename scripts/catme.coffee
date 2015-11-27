@@ -13,7 +13,7 @@
 
 module.exports = (robot) ->
   robot.respond /cat me/i, (msg) ->
-     msg.send "Don't worry, really Cats coming soon!"
+     msg.send "Don't worry, real Cats coming soon!"
 
   #robot.respond /cat me/i, (msg) ->
   #  msg.http("http://Catme.herokuapp.com/random")
