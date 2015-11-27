@@ -11,9 +11,17 @@
 #   hubot cat me - Receive a cat
 #   hubot cat bomb N - get N cat
 
+# static list of cat images
+
+cats = [
+  "http://i.imgur.com/NXRSVri.jpg",
+  "http://i.imgur.com/xWCDvJx.jpg",
+  "http://i.imgur.com/GbhVwcm.gif",
+]
+
 module.exports = (robot) ->
   robot.respond /cat me/i, (msg) ->
-     msg.send "http://i.imgur.com/NXRSVri.jpg"
+     msg.send cats[Math.floor(Math.random() * cats.length)]
 
   #robot.respond /cat me/i, (msg) ->
   #  msg.http("http://Catme.herokuapp.com/random")
