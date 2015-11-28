@@ -45,12 +45,3 @@ module.exports = (robot) ->
         msg.send "There are #{data.data.length} cats."
       else
         console.error "imgur-info script error: #{api_url} returned #{res.statusCode}: #{body}"
-
-
-  robot.respond /hot me/i, (msg)->
-    msg.http(api_url).headers('Authorization': token).get() (err, res, body) ->
-      if res.statusCode is 200
-        data = JSON.parse(body)
-        msg.send "#{data.data[1].link}"
-      else
-        console.error "imgur-info script error: #{api_url} returned #{res.statusCode}: #{body}"
