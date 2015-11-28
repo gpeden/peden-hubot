@@ -14,7 +14,7 @@
 
 # static list of cat images
 
-#token = "Client-ID #{process.env.HUBOT_IMGUR_CLIENTID}"
+token = "Client-ID #{process.env.HUBOT_IMGUR_CLIENTID}"
 api_url = "https://api.imgur.com/3/gallery/r/CatGifs/0.json"
 
 module.exports = (robot) ->
@@ -43,5 +43,14 @@ module.exports = (robot) ->
       if res.statusCode is 200
         data = JSON.parse(body)
         msg.send "There are #{data.data.length} cats."
+      else
+        console.error "imgur-info script error: #{api_url} returned #{res.statusCode}: #{body}"
+
+
+  robot.respond /hot me/i, (msg)->
+    msg.http(api_url).headers('Authorization': token).get() (err, res, body) ->
+      if res.statusCode is 200
+        data = JSON.parse(body)
+        msg.send "#{data.data[1].link}"
       else
         console.error "imgur-info script error: #{api_url} returned #{res.statusCode}: #{body}"
