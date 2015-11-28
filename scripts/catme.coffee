@@ -5,16 +5,18 @@
 #   None
 #
 # Configuration:
-#   None
+# You'll need to generate a Client-ID at:
+#       https://api.imgur.com/oauth2/addclient
+#
+# If you are using heroku, you will need set HUBOT_IMGUR_CLIENTID in the Settings:Config Vars section.
+token = "Client-ID #{process.env.HUBOT_IMGUR_CLIENTID}"
+
 #
 # Commands:
 #   hubot cat me - Receive a cat
 #   hubot cat bomb N - get N cat
 #   hubot how many cats are there - return count of cats
 
-# static list of cat images
-
-token = "Client-ID #{process.env.HUBOT_IMGUR_CLIENTID}"
 api_url = "https://api.imgur.com/3/gallery/r/CatGifs/0.json"
 
 module.exports = (robot) ->
