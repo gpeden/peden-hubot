@@ -37,16 +37,11 @@ You'll see some start up output and a prompt:
 Then you can interact with catbot by typing `catbot help'
 
     catbot> catbot help
-    catbot animate me <query> - The same thing as `image me`, except adds [snip]
-    catbot help - Displays all of the help commands that catbot knows about.
+    catbot cat bomb N - get N cat
+    catbot cat me - Receive a cat
+    catbot how many cats are there - return count of cats
     ...
 
-### Imgur Configuration:
-You'll need to generate a Client-ID at:
-       https://api.imgur.com/oauth2/addclient
-
-If you are using heroku, you will need set HUBOT_IMGUR_CLIENTID in the Settings:Config Vars section.  
-`token = "Client-ID #{process.env.HUBOT_IMGUR_CLIENTID}"`
 
 ### General script configuration
 A few scripts (including some installed by default) require environment
