@@ -63,6 +63,10 @@ Rather than recreate the various methods and best practices in achieving this,
 it's suggested that you search for a dedicated guide focused on your OS.
 
 ### imgur Client-ID
+You'll need to generate a Client-ID at:
+       https://api.imgur.com/oauth2/addclient
+
+If you are using heroku, you will need set HUBOT_IMGUR_CLIENTID in the Settings:Config Vars section.
 
 ### Scripting
 
