@@ -25,7 +25,7 @@ module.exports = (robot) ->
         randomNum = Math.floor(Math.random() * data.data.length)
         msg.send "#{data.data[randomNum].link}"
       else
-        console.error "imgur-info script error: #{api_url} returned #{res.statusCode}: #{body}"
+        console.error "cat me script error: #{api_url} returned #{res.statusCode}: #{body}"
 
   robot.respond /cat bomb( (\d+))?/i, (msg) ->
     max_cats = msg.match[2] || 5
@@ -36,7 +36,7 @@ module.exports = (robot) ->
           randomNum = Math.floor(Math.random() * data.data.length)
           msg.send "#{data.data[randomNum].link}"
       else
-        console.error "imgur-info script error: #{api_url} returned #{res.statusCode}: #{body}"
+        console.error "cat me script error: #{api_url} returned #{res.statusCode}: #{body}"
 
   robot.respond /how many cats are there/i, (msg) ->
     msg.http(api_url).headers('Authorization': token).get() (err, res, body) ->
@@ -44,4 +44,4 @@ module.exports = (robot) ->
         data = JSON.parse(body)
         msg.send "There are #{data.data.length} cats."
       else
-        console.error "imgur-info script error: #{api_url} returned #{res.statusCode}: #{body}"
+        console.error "cat me script error: #{api_url} returned #{res.statusCode}: #{body}"
