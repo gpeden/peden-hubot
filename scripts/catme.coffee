@@ -7,6 +7,7 @@
 # Commands:
 #   hubot cat me - Receive a cat
 #   hubot cat bomb N - get N cat
+#   hubot cat crazy - Receive a crazy cat
 #   hubot how many cats are there - return count of cats
 #
 # Configuration:
@@ -20,8 +21,7 @@ api_url = "https://api.imgur.com/3/gallery/r/CatGifs/0.json"
 
 module.exports = (robot) ->
   robot.respond /cat crazy/i, (msg) ->
-    msg.http(api_url).headers('Authorization': token).get() (err, res, body) ->
-        msg.send "https://poolhouse.s3.amazonaws.com/blog-assets-two/2014/08/7fe91_ORIG-crazy_black_cat.jpg"
+    msg.send "https://poolhouse.s3.amazonaws.com/blog-assets-two/2014/08/7fe91_ORIG-crazy_black_cat.jpg"
 
   robot.respond /cat me/i, (msg) ->
     msg.http(api_url).headers('Authorization': token).get() (err, res, body) ->
