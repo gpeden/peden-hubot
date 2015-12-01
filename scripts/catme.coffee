@@ -19,9 +19,13 @@ token = "Client-ID #{process.env.HUBOT_IMGUR_CLIENTID}"
 
 api_url = "https://api.imgur.com/3/gallery/r/CatGifs/0.json"
 
+crazy_cats = [
+  "https://poolhouse.s3.amazonaws.com/blog-assets-two/2014/08/7fe91_ORIG-crazy_black_cat.jpg",
+  "http://1.bp.blogspot.com/-JC4wCFVpLZw/UJaT2IrHCNI/AAAAAAAABZ4/nTJKwEA8SJM/s1600/398302_408552275882373_1560360944_n.jpeg"
+]
 module.exports = (robot) ->
   robot.respond /cat crazy/i, (msg) ->
-    msg.send "https://poolhouse.s3.amazonaws.com/blog-assets-two/2014/08/7fe91_ORIG-crazy_black_cat.jpg"
+    msg.send msg.random crazy_cats
 
   robot.respond /cat me/i, (msg) ->
     msg.http(api_url).headers('Authorization': token).get() (err, res, body) ->
