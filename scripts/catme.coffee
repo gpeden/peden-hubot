@@ -21,7 +21,8 @@ api_url = "https://api.imgur.com/3/gallery/r/CatGifs/0.json"
 
 crazy_cats = [
   "https://poolhouse.s3.amazonaws.com/blog-assets-two/2014/08/7fe91_ORIG-crazy_black_cat.jpg",
-  "http://1.bp.blogspot.com/-JC4wCFVpLZw/UJaT2IrHCNI/AAAAAAAABZ4/nTJKwEA8SJM/s1600/398302_408552275882373_1560360944_n.jpeg"
+  "http://1.bp.blogspot.com/-JC4wCFVpLZw/UJaT2IrHCNI/AAAAAAAABZ4/nTJKwEA8SJM/s1600/398302_408552275882373_1560360944_n.jpeg",
+  "https://s-media-cache-ak0.pinimg.com/236x/2b/52/ae/2b52aee3cb9ca9bc4b0b345138addb46.jpg"
 ]
 module.exports = (robot) ->
   robot.respond /cat crazy/i, (msg) ->
