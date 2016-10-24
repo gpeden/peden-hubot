@@ -26,7 +26,6 @@ ENV HUBOT_ADAPTER slack
 ENV HUBOT_DESCRIPTION Just a friendly robot named Max
 ENV HUBOT_PORT 8080
 ENV HUBOT_ADAPTER slack
-# ENV HUBOT_SLACK_TOKEN=your_token_here
 ENV HUBOT_SLACK_TEAM slalompdx
 ENV HUBOT_SLACK_BOTNAME ${HUBOT_NAME}
 ENV PORT ${HUBOT_PORT}
@@ -35,4 +34,6 @@ EXPOSE ${HUBOT_PORT}
 
 WORKDIR /opt/bot
 
-CMD bin/hubot --adapter $HUBOT_ADAPTER --owner $HUBOT_OWNER --name $HUBOT_NAME --description $HUBOT_DESCRIPTION --defaults && bin/hubot --adapter $HUBOT_ADAPTER
+# CMD bin/hubot --adapter $HUBOT_ADAPTER --owner $HUBOT_OWNER --name $HUBOT_NAME --description $HUBOT_DESCRIPTION --defaults && bin/hubot --adapter $HUBOT_ADAPTER
+
+CMD ["/bin/sh", "-c", "bin/hubot --adapter slack"]
