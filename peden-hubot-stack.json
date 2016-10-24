@@ -1,0 +1,18 @@
+{
+    "family": "peden-hubot",
+    "networkMode": "bridge",
+    "containerDefinitions": [
+        {
+            "name": "peden-hubot",
+            "image": "583493077616.dkr.ecr.us-west-2.amazonaws.com/peden-hubot" ,
+            "cpu": 2,
+            "memory": 250,
+            "environment": [
+                {
+                    "name": "HUBOT_SLACK_TOKEN",
+                    "value": "xoxb-95134725334-mHBaHRPQxARCxKgnSDLXNLo7"
+                }
+            ]
+        }
+    ]
+}
