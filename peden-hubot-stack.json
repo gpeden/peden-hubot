@@ -7,12 +7,14 @@
             "image": "583493077616.dkr.ecr.us-west-2.amazonaws.com/peden-hubot" ,
             "cpu": 2,
             "memory": 250,
-            "environment": [
-                {
-                    "name": "HUBOT_SLACK_TOKEN",
-                    "value": "xoxb-95134725334-mHBaHRPQxARCxKgnSDLXNLo7"
+            "logConfiguration": {
+              "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "awslogs-peden-hubot",
+                    "awslogs-region": "us-west-2",
+                    "awslogs-stream-prefix": "awslogs-peden"
                 }
-            ]
+            }
         }
     ]
 }
