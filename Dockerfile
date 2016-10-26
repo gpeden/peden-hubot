@@ -3,7 +3,12 @@
 FROM ubuntu:14.04
 MAINTAINER George Peden, georgep@slalom.com
 
+
 ENV BOTDIR /opt/bot
+
+RUN apt-get update && \
+    apt-get install -y python-pip && \
+    pip install awscli
 
 RUN apt-get update && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y wget && \
@@ -11,6 +16,7 @@ RUN apt-get update && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y git build-essential nodejs && \
   rm -rf /var/lib/apt/lists/* && \
   git clone --depth=1 https://github.com/gpeden/peden-hubot.git ${BOTDIR}
+
 
 WORKDIR ${BOTDIR}
 
@@ -20,20 +26,9 @@ RUN npm install
 
 # optionally override variables with docker run -e HUBOT_...
 # Modify ./ENV file to override these options
-ENV HUBOT_OWNER max
-ENV HUBOT_NAME max
-ENV HUBOT_ADAPTER slack
-ENV HUBOT_DESCRIPTION Just a friendly robot named Max
-ENV HUBOT_PORT 8080
-ENV HUBOT_ADAPTER slack
-ENV HUBOT_SLACK_TEAM slalompdx
-ENV HUBOT_SLACK_BOTNAME ${HUBOT_NAME}
 ENV PORT ${HUBOT_PORT}
-
 EXPOSE ${HUBOT_PORT}
 
 WORKDIR /opt/bot
 
-# CMD bin/hubot --adapter $HUBOT_ADAPTER --owner $HUBOT_OWNER --name $HUBOT_NAME --description $HUBOT_DESCRIPTION --defaults && bin/hubot --adapter $HUBOT_ADAPTER
-
-CMD ["/bin/sh", "-c", "bin/hubot --adapter slack"]
+CMD ["/bin/sh", "-c", "aws s3 cp --region us-west-2 s3://peden-hubot-secrets/env.sh .; . ./env.sh; bin/hubot --adapter slack"]
